@@ -1,11 +1,11 @@
-import "./App.css";
+import Header from './components/Layout/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello from React app</h1>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+        </div>
+    );
 }
 
 export default App;
