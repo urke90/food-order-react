@@ -5,7 +5,6 @@ import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = ({ showCartHandler }) => {
     const cartCtx = useContext(CartContext);
-    console.log('CartCtx', cartCtx);
 
     const totalItems = cartCtx.items.reduce(
         (currNum, item) => currNum + item.amount,
