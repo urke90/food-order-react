@@ -6,24 +6,28 @@ import classes from './Cart.module.css';
 
 const Cart = ({ onHideCart }) => {
     const cartCtx = useContext(CartContext);
-    console.log('cartCtx', cartCtx);
 
-    const addItemToCartHandler = (item) => {};
-
-    const removeItemFromCart = (id) => {
-        console.log('removeItemFromCart', id);
+    const addItemToCartHandler = (item) => {
+        cartCtx.addItem({ ...item, amount: 1 });
     };
 
-    const cartItems = cartCtx.items.map(({ id, name, price, amount }) => (
-        <CartItem
-            key={id}
-            name={name}
-            price={price}
-            amount={amount}
-            onAdd={addItemToCartHandler}
-            onRemove={() => removeItemFromCart(id)}
-        />
-    ));
+    const removeItemFromCart = (id) => {
+        // console.log('removeItemFromCart', id);
+        cartCtx.removeItem(id);
+    };
+
+    const cartItems = cartCtx.items.map((item) => {
+        return (
+            <CartItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                amount={item.amount}
+                onAdd={() => addItemToCartHandler(item)}
+                onRemove={() => removeItemFromCart(item.id)}
+            />
+        );
+    });
 
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 
