@@ -12,7 +12,6 @@ const Cart = ({ onHideCart }) => {
     };
 
     const removeItemFromCart = (id) => {
-        // console.log('removeItemFromCart', id);
         cartCtx.removeItem(id);
     };
 
