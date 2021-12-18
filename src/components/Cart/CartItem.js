@@ -1,6 +1,6 @@
 import classes from './CartItem.module.css';
 
-const CartItem = ({ id, name, price, amount, onAdd, onRemove }) => {
+const CartItem = ({ name, price, amount, onAdd, onRemove }) => {
     const formatedPrice = `$${price.toFixed(2)}`;
 
     return (
