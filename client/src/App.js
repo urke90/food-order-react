@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
@@ -15,6 +15,12 @@ function App() {
     const hideModalHandler = () => {
         setModalIsShown(false);
     };
+
+    useEffect(() => {
+        fetch('/api')
+            .then((res) => res.json())
+            .then((res) => console.log('res from /API', res));
+    }, []);
 
     return (
         <CartProvider>
