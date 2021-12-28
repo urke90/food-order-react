@@ -1,4 +1,5 @@
-const getDb = require('../util/database').getDb;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const DUMMY_MEALS = [
     {
@@ -27,31 +28,22 @@ const DUMMY_MEALS = [
     }
 ];
 
-class Meal {
-    constructor(name, description, price) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-    }
+const mealSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number,
+            required: true
+        }
+    },
+    { timestamps: true }
+);
 
-    static fetchAll() {
-        const db = getDb();
-
-        return db
-            .collection('meals')
-            .find()
-            .toArray()
-            .then((meals) => {
-                // console.log('FETCHED MEALS', meals);
-                return meals;
-            });
-    }
-
-    save() {
-        const db = getDb();
-        db.collection('meals');
-        console.log('db', db);
-    }
-}
-
-module.exports = Meal;
+module.exports = mongoose.model('Meal', mealSchema);
