@@ -41,6 +41,10 @@ const mealSchema = new Schema(
         price: {
             type: Number,
             required: true
+        },
+        creator: {
+            type: Object,
+            required: true
         }
     },
     { timestamps: true }

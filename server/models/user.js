@@ -10,7 +10,19 @@ const userSchema = new Schema(
         password: {
             type: String,
             required: true
+        },
+        name: {
+            type: String,
+            require: true
+        },
+        status: {
+            type: String,
+            default: 'new user'
         }
+        // meals: [{
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Meal'
+        // }]
     },
     { timestamps: true }
 );
